@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   get("/update_actor/:id", { :controller => "actors", :action => "update_row_actor" })
 
   # DELETE
-  get("/delete_actor/:id", { :controller => "actors", :action => "destroy_actor" })
+  get("/delete_actor/:id", { :controller => "actors", :action => "destroy" })
   #------------------------------
   mount WebGit::Engine, at: "/rails/git"
 end
