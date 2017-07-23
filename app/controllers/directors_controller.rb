@@ -18,10 +18,10 @@ class DirectorsController < ApplicationController
 
   def create_row_director
     d = Director.new
-    d.dob = params[:dob]
-    d.name = params[:name]
-    d.bio = params[:bio]
-    d.image_url = params[:image_url]
+    d.dob = params[:dob].to_s
+    d.name = params[:name].to_s
+    d.bio = params[:bio].to_s
+    d.image_url = params[:image_url].to_s
 
     d.save
 
