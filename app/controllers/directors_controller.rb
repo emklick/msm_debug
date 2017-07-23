@@ -1,22 +1,22 @@
 class DirectorsController < ApplicationController
-  def index
-    @directors = Director.all
+  def index_director
+    @list_of_directors = Director.order(:id => :desc)
     
     render("directors/index.html.erb")
   end
 
-  def show
+  def show_director
     @director = Director.find(params[:id])
     
     render("directors/show.html.erb")
   end
 
-  def new
+  def new_director
     
     render("roles/new_form.html.erb")
   end
 
-  def create_row
+  def create_row_director
     @director = Director.new
     @director.dob = params[:dob]
     @director.name = params[:name]
@@ -28,13 +28,13 @@ class DirectorsController < ApplicationController
     render("directors/new_form.html.erb")
   end
 
-  def edit_form
+  def edit_form_director
     @director = Director.find(params[:id])
     
     render("directors/edit_form.html.erb")
   end
 
-  def update_row
+  def update_row_director
     @director = Director.find(params[:id])
 
     @director.dob = params[:dob]
@@ -47,7 +47,7 @@ class DirectorsController < ApplicationController
     render("directors/edit_form.html.erb")
   end
 
-  def destroy
+  def destroy_director
     @director = Director.find(params[:id])
 
     @director.destroy
