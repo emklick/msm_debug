@@ -1,13 +1,20 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
+    
+    render("movies/index.html.erb")
   end
 
   def show
     @movie = Movie.find(params[id])
+    
+    render("movies/show.html.erb")
   end
 
   def new_form
+    
+    
+    render("movies/new_form.html.erb")
   end
 
   def create_row
@@ -20,11 +27,13 @@ class MoviesController < ApplicationController
 
     @movie.save
 
-    render("show")
+    render("movies/edit_form.html.erb")
   end
 
   def edit_form
     @movie = Movie.find(params[:id])
+    
+    render("movies/edit_form.html.erb")
   end
 
   def update_row
@@ -35,12 +44,14 @@ class MoviesController < ApplicationController
     @movie.image_url = params[:image_url]
     @movie.director_id = params[:director_id]
 
-    render("show")
+    render("movies/edit_form.html.erb")
   end
 
   def destroy
-    movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])
 
-    movie.destroy
+    @movie.destroy
+    
+    render("movies/destroy.html.erb")
   end
 end

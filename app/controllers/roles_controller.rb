@@ -1,13 +1,19 @@
 class RolesController < ApplicationController
   def index
     @roles = Role.all
+    
+    render("roles/index.html.erb")
   end
 
   def show
     @role = Role.find(params[:id])
+    
+    render("roles/show.html.erb")
   end
 
   def new_form
+    
+    render("roles/new_form.html.erb")
   end
 
   def create_row
@@ -18,11 +24,13 @@ class RolesController < ApplicationController
 
     @role.save
 
-    render("show")
+    render("roles/edit_form.html.erb")
   end
 
   def edit_form
     @role = Role.find(params[:id])
+    
+    render("roles/edit_form.html.erb")
   end
 
   def update_row
@@ -34,12 +42,14 @@ class RolesController < ApplicationController
 
     @role.save
 
-    render("show")
+    render("roles/edit_form.html.erb")
   end
 
   def destroy
     @role = Role.find(params[:id])
 
     @role.destroy
+    
+    render("roles/destroy.html.erb")
   end
 end
