@@ -29,7 +29,7 @@
       Bio
     </label>
     <div class="col-sm-10">
-      <textarea id="bio" name="the_bio" placeholder="Bio" class="form-control" rows="3"><%= @director.bio %></textarea>
+      <textarea id="bio" name="the_bio" placeholder="Bio" class="form-control" rows="3"> value"<%= @director.bio %>"></textarea>
     </div>
   </div>
 
@@ -45,8 +45,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <input type="submit" value="Update Director" class="btn btn-primary">
-      <p><a href="/movies/<%= @director.id %>" class="btn btn-primary">Update Director</a></p>
+      <p><a href="/directors/<%= @director.id %>" class="btn btn-primary">Update Director</a></p>
     </div>
   </div>
 </form>
