@@ -17,6 +17,8 @@ class DirectorsController < ApplicationController
   end
 
   def create_row_director
+    @director = Director.new
+    
     d = Director.new
     d.dob = params[:dob]
     d.name = params[:name]

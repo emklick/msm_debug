@@ -17,6 +17,9 @@ class RolesController < ApplicationController
   end
 
   def create_row_role
+    
+    @roles = Roles.new  
+  
     r = Role.new
     r.character_name = params[:character_name]
     r.movie_id = params[:movie_id]
@@ -34,6 +37,9 @@ class RolesController < ApplicationController
   end
 
   def update_row_role
+    
+    @roles = Role.find(params[:id])
+    
     r = Role.find(params[:id])
 
     r.character_name = params[:character_name]
@@ -46,6 +52,9 @@ class RolesController < ApplicationController
   end
 
   def destroy_role
+    
+    @roles = Role.find(params[:id])
+    
     r = Role.find(params[:id])
 
     r.destroy

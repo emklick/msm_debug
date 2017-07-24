@@ -17,6 +17,9 @@ class MoviesController < ApplicationController
   end
 
   def create_row_movie
+    
+    @movie = Movie.new
+    
     m = Movie.new
     m.title = params[:the_title]
     m.year = params[:the_year]
@@ -39,6 +42,8 @@ class MoviesController < ApplicationController
 
   def update_row_movie
     
+    @movie = Movie.find(params[:id])
+    
     m = Movie.find(params[:id])    
     
     m.title = params[:the_title]
@@ -54,6 +59,9 @@ class MoviesController < ApplicationController
   end
 
   def destroy_movie
+    
+    @movie = Movie.find(params[:id])
+    
     m = Movie.find(params[:id])
 
     m.destroy

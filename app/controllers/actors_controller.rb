@@ -17,6 +17,8 @@ class ActorsController < ApplicationController
   end
 
   def create_row_actor
+    @actor = Actor.new
+    
     a = Actor.new
     a.dob = params[:dob]
     a.name = params[:name]
@@ -35,6 +37,9 @@ class ActorsController < ApplicationController
   end
 
   def update_row_actor
+    
+    @actor = Actor.find(params[:id])
+
     a = Actor.find(params[:id])
 
     a.dob = params[:dob]
@@ -48,6 +53,8 @@ class ActorsController < ApplicationController
   end
 
   def destroy_actor
+    
+    @actor = Actor.find(params[:id]) 
     a = Actor.find(params[:id])
 
     a.destroy
