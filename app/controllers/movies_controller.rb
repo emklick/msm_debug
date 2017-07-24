@@ -17,15 +17,16 @@ class MoviesController < ApplicationController
   end
 
   def create_row_movie
-    @movie = Movie.new
-    @movie.title = params[:the_title]
-    @movie.year = params[:the_year]
-    @movie.duration = params[:the_duration]
-    @movie.description = params[:the_description]
-    @movie.image_url = params[:the_image_url]
-    @movie.director_id = params[:the_director_id]
+    m = Movie.new
+    m.title = params[:the_title]
+    m.year = params[:the_year]
+    m.duration = params[:the_duration]
+    m.description = params[:the_description]
+    m.image_url = params[:the_image_url]
+    m.director_id = params[:the_director_id]
 
-    @movie.save
+    m.save
+    
 
     render("movies/edit_form_movies.html.erb")
   end
@@ -38,22 +39,26 @@ class MoviesController < ApplicationController
 
   def update_row_movie
     
-    @movie = Movie.find(params[:id])    
+    m = Movie.find(params[:id])    
     
-    @movie.title = params[:the_title]
-    @movie.year = params[:the_year]
-    @movie.duration = params[:the_duration]
-    @movie.description = params[:the_description]
-    @movie.image_url = params[:the_image_url]
-    @movie.director_id = params[:the_director_id]
+    m.title = params[:the_title]
+    m.year = params[:the_year]
+    m.duration = params[:the_duration]
+    m.description = params[:the_description]
+    m.image_url = params[:the_image_url]
+    m.director_id = params[:the_director_id]
+    
+    m.save
 
     render("movies/edit_form_movies.html.erb")
   end
 
   def destroy_movie
-    @movie = Movie.find(params[:id])
+    m = Movie.find(params[:id])
 
-    @movie.destroy
+    m.destroy
+    
+    m.save
     
     render("movies/destroy_movies.html.erb")
   end

@@ -17,12 +17,12 @@ class RolesController < ApplicationController
   end
 
   def create_row_role
-    @role = Role.new
-    @role.character_name = params[:character_name]
-    @role.movie_id = params[:movie_id]
-    @role.actor_id = params[:actor_id]
+    r = Role.new
+    r.character_name = params[:character_name]
+    r.movie_id = params[:movie_id]
+    r.actor_id = params[:actor_id]
 
-    @role.save
+    r.save
 
     render("roles/edit_form_roles.html.erb")
   end
@@ -34,21 +34,23 @@ class RolesController < ApplicationController
   end
 
   def update_row_role
-    @role = Role.find(params[:id])
+    r = Role.find(params[:id])
 
-    @role.character_name = params[:character_name]
-    @role.movie_id = params[:movie_id]
-    @role.actor_id = params[:actor_id]
+    r.character_name = params[:character_name]
+    r.movie_id = params[:movie_id]
+    r.actor_id = params[:actor_id]
 
-    @role.save
+    r.save
 
     render("roles/edit_form_roles.html.erb")
   end
 
   def destroy_role
-    @role = Role.find(params[:id])
+    r = Role.find(params[:id])
 
-    @role.destroy
+    r.destroy
+    
+    r.save
     
     render("roles/destroy_roles.html.erb")
   end

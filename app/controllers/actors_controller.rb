@@ -17,13 +17,13 @@ class ActorsController < ApplicationController
   end
 
   def create_row_actor
-    @actor = Actor.new
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    a = Actor.new
+    a.dob = params[:dob]
+    a.name = params[:name]
+    a.bio = params[:bio]
+    a.image_url = params[:image_url]
 
-    @actor.save
+    a.save
 
     render("actors/new_form_actors.html.erb")
   end
@@ -35,22 +35,24 @@ class ActorsController < ApplicationController
   end
 
   def update_row_actor
-    @actor = Actor.find(params[:id])
+    a = Actor.find(params[:id])
 
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    a.dob = params[:dob]
+    a.name = params[:name]
+    a.bio = params[:bio]
+    a.image_url = params[:image_url]
 
-    @actor.save
+    a.save
 
     render("actors/edit_form_actors.html.erb")
   end
 
   def destroy_actor
-    @actor = Actor.find(params[:id])
+    a = Actor.find(params[:id])
 
-    @actor.destroy
+    a.destroy
+    
+    a.save
     
     render("actors/destroy_actors.html.erb")
   end
