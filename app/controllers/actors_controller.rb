@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
   def index
-    @actors = Actor.all
+    @list_of_actors = Actor.all
     
     render("actors/index.html.erb")
   end
@@ -18,12 +18,14 @@ class ActorsController < ApplicationController
 
   def create_row
     @actor = Actor.new
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    
+    a = Actor.new
+    a.dob = params[:dob]
+    a.name = params[:name]
+    a.bio = params[:bio]
+    a.image_url = params[:image_url]
 
-    @actor.save
+    a.save
 
     render("actors/new_form.html.erb")
   end
@@ -35,22 +37,29 @@ class ActorsController < ApplicationController
   end
 
   def update_row
+    
     @actor = Actor.find(params[:id])
 
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    a = Actor.find(params[:id])
 
-    @actor.save
+    a.dob = params[:dob]
+    a.name = params[:name]
+    a.bio = params[:bio]
+    a.image_url = params[:image_url]
+
+    a.save
 
     render("actors/edit_form.html.erb")
   end
 
   def destroy
-    @actor = Actor.find(params[:id])
+    
+    @actor = Actor.find(params[:id]) 
+    a = Actor.find(params[:id])
 
-    @actor.destroy
+    a.destroy
+    
+    a.save
     
     render("actors/destroy.html.erb")
   end

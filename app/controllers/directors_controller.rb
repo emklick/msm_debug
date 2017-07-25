@@ -1,6 +1,6 @@
 class DirectorsController < ApplicationController
   def index
-    @directors = Director.all
+    @list_of_directors = Director.all
     
     render("directors/index.html.erb")
   end
@@ -11,19 +11,21 @@ class DirectorsController < ApplicationController
     render("directors/show.html.erb")
   end
 
-  def new
+  def new_form
     
-    render("roles/new_form.html.erb")
+    render("directors/new_form.html.erb")
   end
 
   def create_row
     @director = Director.new
-    @director.dob = params[:dob]
-    @director.name = params[:name]
-    @director.bio = params[:bio]
-    @director.image_url = params[:image_url]
+    
+    d = Director.new
+    d.dob = params[:dob]
+    d.name = params[:name]
+    d.bio = params[:bio]
+    d.image_url = params[:image_url]
 
-    @director.save
+    d.save
 
     render("directors/new_form.html.erb")
   end
@@ -36,21 +38,27 @@ class DirectorsController < ApplicationController
 
   def update_row
     @director = Director.find(params[:id])
+  
+    d = @director
 
-    @director.dob = params[":dob"]
-    @director.name = params[":name"]
-    @director.bio = params[":bio"]
-    @director.image_url = params[":image_url"]
+    d.dob = params[:dob]
+    d.name = params[:name]
+    d.bio = params[:bio]
+    d.image_url = params[:image_url]
 
-    @director.save
+    d.save
 
     render("directors/edit_form.html.erb")
   end
 
   def destroy
     @director = Director.find(params[:id])
+    
+    d = @director
 
-    @director.destroy
+    d.destroy
+    
+    d.save
     
     render("directors/destroy.html.erb")
   end
